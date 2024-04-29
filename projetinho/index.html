@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestibulinho</title>
+    <link rel="stylesheet" href="css2/home.css">
+</head>
+<body>
+
+    <header class="nav"> 
+        <img class="logo" src="logo.png" alt="">
+        <div class="nav-right">
+            <a href="dash.html"><button class="btn">Cursos</button></a>
+        </div>
+    </header>
+
+    <main class="texto">
+        <img id="entrada" src="etec.pg.jpg">
+            <div class="curso-info">
+    
+       
+    
+            <div id="S">
+                <div>
+                <aside>
+                <p id="R">Etec de Itanhaém</p>
+                <p>A Escola Técnica Estadual (ETEC) de Itanhaém é uma instituição de ensino técnico localizada na cidade de Itanhaém, no litoral sul do estado de São Paulo. Fundada com o objetivo de oferecer educação técnica de qualidade, a ETEC de Itanhaém desempenha um papel fundamental no desenvolvimento educacional e profissional da região.</p>
+    
+                <p>Confira a baixo o processo para inscrição na Etec de Itanhaem: </p>
+                <img id="entrada"src="vestibulinho.png"></aside>
+            </div>
+            </div>
+    
+    
+        
+        </main>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+       <div class="botao">
+                  <!-- Botões de controle -->
+                  <input type="checkbox" id="checkboxLeitura" style="display:none;">
+                  <br>
+                  <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+                  <br>
+                  <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+                  <br>
+                  <button id="toggleButton"><img src="Audio.png" width="100%" height="100%"></button>
+              </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+      <script>
+          function aumentar() {
+              var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+              elementosTexto.forEach(function (elemento) {
+                  let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+                  var tamanho = parseFloat(style);
+                  if (tamanho < 35) {
+                      elemento.style.fontSize = (tamanho + 10) + "px";
+                  }
+              });
+          }
+  
+          function diminuir() {
+              var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+              elementosTexto.forEach(function (elemento) {
+                  let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+                  var tamanho = parseFloat(style);
+                  if (tamanho > 25) {
+                      elemento.style.fontSize = (tamanho - 10) + "px";
+                  }
+              });
+          }
+  
+          // Função para iniciar a fala
+          function falarTexto(texto) {
+              var utterance = new SpeechSynthesisUtterance(texto);
+              window.speechSynthesis.speak(utterance);
+          }
+  
+          document.addEventListener('click', function (event) {
+              if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+                  falarTexto(event.target.textContent);
+              }
+          });
+  
+          document.getElementById('toggleButton').addEventListener('click', function () {
+              var checkbox = document.getElementById('checkboxLeitura');
+              checkbox.checked = !checkbox.checked;
+          });
+      </script>
+</body>
+</html>

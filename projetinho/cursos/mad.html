@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração | Etec de Itanhaém</title>
+    <link rel="stylesheet" href="../css2/css1.css">
+</head>
+<body>
+    <header class="nav"> 
+        <img class="logo" src="../logo.png" alt="">
+        <div class="nav-right">
+            <a href="../dash.html"><button class="btn">Cursos</button></a>
+            <a href="../index.html"><button class="btn">Vestibulinho</button></a>
+            </div>
+        </div>
+    </header>
+    <h1 class="fancy">Administração</h1><br>
+    <h3><center>Período Integral</center></h3>
+
+    <main class="texto">
+    <div class="curso-info">
+        <div id="S">
+            <aside>
+            <p id="R">Sobre o curso</p>
+            <p id="fds">O curso de administração é uma graduação que prepara os alunos para atuar em diversos setores do mercado, tanto no setor público quanto no privado. É uma área ampla que engloba conhecimentos de gestão, economia, contabilidade, marketing, recursos humanos, entre outros.</p>
+            </aside>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Area de Atuação</p>
+            <p>O técnico em Administração pode trabalhar em vários departamentos. No setor de compras, por exemplo, pode elaborar pedidos de compra de produtos, cadastrar fornecedores assim como conferir a entrega das mercadorias adquiridas. Na área de produção, pode fazer planilhas de controle de processos e produtos, registrando quais já foram produzidos e em qual quantidade.
+
+                No departamento de vendas, também pode elaborar planilhas para acompanhar o desempenho das vendas, cadastrar clientes, preencher notas fiscais e gerar boletos bancários. No setor de Recursos Humanos, o técnico pode trabalhar calculando salários e benefícios dos funcionários e auxiliando nos processos de contratação e demissão de pessoal. Em qualquer área, pode atender clientes e fornecedores e redigir documentos, como e-mails, memorandos e atas.</p>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Onde Trabalhar</p>
+            <p>Empresas privadas desempenham um papel crucial na economia global, abrangendo três principais setores: comércio, serviços e indústria. No comércio, essas empresas estão envolvidas na compra, venda e distribuição de uma ampla gama de bens, desde pequenas lojas locais até grandes cadeias de varejo e plataformas de comércio eletrônico. No setor de serviços, oferecem uma variedade de serviços em áreas como consultoria, finanças, saúde, educação, tecnologia, turismo e entretenimento. Por fim, na indústria, estão envolvidas na produção de bens físicos através de processos de fabricação, abrangendo setores como automobilístico, alimentício, químico e tecnológico. Essas empresas contribuem significativamente para a geração de empregos, crescimento econômico e desenvolvimento de comunidades em todo o mundo.</p>
+        </div>
+    </div>
+</main>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+   <div class="botao">
+              <!-- Botões de controle -->
+              <input type="checkbox" id="checkboxLeitura" style="display:none;">
+              <br>
+              <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+              <br>
+              <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+              <br>
+              <button id="toggleButton"><img src="../Audio.png" width="100%" height="100%"></button>
+          </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script>
+      function aumentar() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho < 35) {
+                  elemento.style.fontSize = (tamanho + 10) + "px";
+              }
+          });
+      }
+
+      function diminuir() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho > 25) {
+                  elemento.style.fontSize = (tamanho - 10) + "px";
+              }
+          });
+      }
+
+      // Função para iniciar a fala
+      function falarTexto(texto) {
+          var utterance = new SpeechSynthesisUtterance(texto);
+          window.speechSynthesis.speak(utterance);
+      }
+
+      document.addEventListener('click', function (event) {
+          if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+              falarTexto(event.target.textContent);
+          }
+      });
+
+      document.getElementById('toggleButton').addEventListener('click', function () {
+          var checkbox = document.getElementById('checkboxLeitura');
+          checkbox.checked = !checkbox.checked;
+      });
+  </script>
+</body>
+</html>

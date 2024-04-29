@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento de Sistemas | Etec de Itanhaém</title>
+    <link rel="stylesheet" href="../css2/css1.css">
+</head>
+<body>
+    <header class="nav"> 
+        <img class="logo" src="../logo.png" alt="">
+        <div class="nav-right">
+            <a href="../dash.html"><button class="btn">Cursos</button></a>
+            <a href="../index.html"><button class="btn">Vestibulinho</button></a>
+            </div>
+        </div>
+    </header>
+
+
+    <h1 class="fancy">Desenvolvimento de Sistemas</h1><br>
+    <h3><center>Período Noturno</center></h3>
+
+    <main class="texto">
+    <div class="curso-info">
+        <div id="S">
+            <aside>
+            <p id="R">Sobre o curso</p>
+            <p id="fds">O curso de desenvolvimento de sistemas é uma graduação voltada para formar profissionais capazes de projetar, desenvolver, implementar e manter sistemas de informação, tanto para uso interno de empresas quanto para o mercado em geral. É uma área que está em constante evolução devido ao rápido avanço da tecnologia, e os profissionais formados nesse campo têm uma demanda crescente no mercado de trabalho. Durante o curso, os alunos estudam uma variedade de disciplinas, incluindo programação, algoritmos, banco de dados, redes de computadores, segurança da informação, desenvolvimento web e mobile, entre outras. Eles aprendem a utilizar diversas linguagens de programação, ferramentas de desenvolvimento e metodologias de trabalho para criar sistemas eficientes e seguros.</p>
+            </aside>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Area de Atuação</p>
+            <p>Como técnico em desenvolvimento de sistemas, sua área de atuação é predominantemente focada no desenvolvimento de software e sistemas de informação. Isso implica em uma série de responsabilidades e atividades essenciais: Em primeiro lugar, você estará envolvido no desenvolvimento de aplicativos e software. Isso pode variar desde a criação de aplicativos simples até sistemas complexos e integrados, para diversas plataformas, como desktop, web e mobile.</p>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Onde Trabalhar</p>
+            <p>Pode encontrar oportunidades em grandes empresas de tecnologia, como Google ou Microsoft, participando do desenvolvimento de software inovador. Startups também são uma opção, oferecendo projetos desafiadores e ambiente de trabalho dinâmico. Consultorias de TI são outra possibilidade, permitindo trabalhar em uma variedade de projetos para diferentes clientes.
+            </p>
+        </div>
+    </div>
+</main>
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+   <div class="botao">
+              <!-- Botões de controle -->
+              <input type="checkbox" id="checkboxLeitura" style="display:none;">
+              <br>
+              <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+              <br>
+              <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+              <br>
+              <button id="toggleButton"><img src="../Audio.png" width="100%" height="100%"></button>
+          </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script>
+      function aumentar() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho < 35) {
+                  elemento.style.fontSize = (tamanho + 10) + "px";
+              }
+          });
+      }
+
+      function diminuir() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho > 25) {
+                  elemento.style.fontSize = (tamanho - 10) + "px";
+              }
+          });
+      }
+
+      // Função para iniciar a fala
+      function falarTexto(texto) {
+          var utterance = new SpeechSynthesisUtterance(texto);
+          window.speechSynthesis.speak(utterance);
+      }
+
+      document.addEventListener('click', function (event) {
+          if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+              falarTexto(event.target.textContent);
+          }
+      });
+
+      document.getElementById('toggleButton').addEventListener('click', function () {
+          var checkbox = document.getElementById('checkboxLeitura');
+          checkbox.checked = !checkbox.checked;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css2/ii.css" />
+  </head>
+  <body>
+    <header class="nav"> 
+      <img class="logo" src="logo.png" alt="">
+      <div class="nav-right">
+          <a href="index.html"><button class="btn">Vestibulinho</button></a>
+      </div>
+  </header>
+    <h1>Cursos da Etec de Itanhaém</h1>
+    <div class="container">
+      <div class="row">
+        <div>
+          <a href="cursos/min.html">
+            <div id="um" class="dash">
+            <p>Informática para Internet</p>
+            </div>
+          </a>
+        </div>
+        <div>
+          <a href="cursos/mam.html">
+            <div id="2" class="dash"><p>Meio Ambiente</p></div></a
+          >
+        </div>
+        <div>
+          <a href="cursos/mad.html"
+            ><div id="3" class="dash"><p>Administração (Integral)</p></div></a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="image-container">
+          <a href="cursos/ds.html"
+            ><div id="4" class="dash"><p>Desenvolvimento de Sistemas</p></div></a
+          >
+        </div>
+        <div>
+          <a href="cursos/farm.html"
+            ><div id="5" class="dash"><p>Farmácia</p></div></a
+          >
+        </div>
+        <div>
+          <a href="cursos/adm.html"
+            ><div id="6" class="dash"><p>Administração (Noturno)</p></div></a
+          >
+        </div>
+      </div>
+    </div>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+     <div class="botao">
+                <!-- Botões de controle -->
+                <input type="checkbox" id="checkboxLeitura" style="display:none;">
+                <br>
+                <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+                <br>
+                <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+                <br>
+                <button id="toggleButton"><img src="Audio.png" width="100%" height="100%"></button>
+            </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script>
+        function aumentar() {
+            var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+            elementosTexto.forEach(function (elemento) {
+                let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+                var tamanho = parseFloat(style);
+                if (tamanho < 35) {
+                    elemento.style.fontSize = (tamanho + 10) + "px";
+                }
+            });
+        }
+
+        function diminuir() {
+            var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+            elementosTexto.forEach(function (elemento) {
+                let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+                var tamanho = parseFloat(style);
+                if (tamanho > 25) {
+                    elemento.style.fontSize = (tamanho - 10) + "px";
+                }
+            });
+        }
+
+        // Função para iniciar a fala
+        function falarTexto(texto) {
+            var utterance = new SpeechSynthesisUtterance(texto);
+            window.speechSynthesis.speak(utterance);
+        }
+
+        document.addEventListener('click', function (event) {
+            if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+                falarTexto(event.target.textContent);
+            }
+        });
+
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            var checkbox = document.getElementById('checkboxLeitura');
+            checkbox.checked = !checkbox.checked;
+        });
+    </script>
+  </body>
+</html>

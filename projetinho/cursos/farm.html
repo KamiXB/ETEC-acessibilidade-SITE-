@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia | Etec de Itanhaém</title>
+    <link rel="stylesheet" href="../css2/css1.css">
+</head>
+<body>
+    <header class="nav"> 
+        <img class="logo" src="../logo.png" alt="">
+        <div class="nav-right">
+            <a href="../dash.html"><button class="btn">Cursos</button></a>
+            <a href="../index.html"><button class="btn">Vestibulinho</button></a>
+            </div>
+        </div>
+    </header>
+    <h1 class="fancy">Farmácia</h1><br>
+    <h3><center>Período Noturno</center></h3>
+
+    <main class="texto">
+    <div class="curso-info">
+        <div id="S">
+            <aside>
+            <p id="R">Sobre o curso</p>
+            <p id="fds">O curso de Farmácia é uma graduação que prepara os alunos para atuar na área da saúde, especificamente no cuidado com medicamentos, cosméticos, alimentos funcionais e outras substâncias relacionadas à saúde e ao bem-estar. É uma área multidisciplinar que combina conhecimentos de ciências naturais, saúde, tecnologia e gestão. Durante o curso, os alunos estudam uma variedade de disciplinas, incluindo química, bioquímica, biologia celular e molecular, fisiologia, farmacologia, toxicologia, microbiologia, tecnologia farmacêutica, entre outras. Eles também aprendem sobre legislação farmacêutica, ética profissional, gestão de farmácias e drogarias, e práticas de atenção farmacêutica.</p>
+            </aside>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Area de Atuação</p>
+            <p>O campo de atuação para técnicos em farmácia é vasto e diversificado, com oportunidades em várias áreas dentro do setor farmacêutico. Esses profissionais desempenham um papel fundamental na prestação de serviços de saúde, trabalhando em estreita colaboração com farmacêuticos e outros profissionais de saúde. Suas responsabilidades incluem o suporte operacional em farmácias, hospitais, indústrias farmacêuticas e laboratórios de análises clínicas.</p>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Onde Trabalhar</p>
+            <p>Técnicos em farmácia trabalham em diversos ambientes relacionados à saúde e à indústria farmacêutica. Isso inclui farmácias comunitárias, onde auxiliam na dispensação de medicamentos e oferecem orientações aos pacientes. Eles também podem ser encontrados em hospitais, contribuindo para a distribuição e administração segura de medicamentos. Além disso, trabalham em indústrias farmacêuticas, ajudando na produção, embalagem e rotulagem de medicamentos, bem como em laboratórios de análises clínicas, realizando testes e análises de amostras biológicas. 
+            </p>
+        </div>
+    </div>
+
+</main>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+   <div class="botao">
+              <!-- Botões de controle -->
+              <input type="checkbox" id="checkboxLeitura" style="display:none;">
+              <br>
+              <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+              <br>
+              <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+              <br>
+              <button id="toggleButton"><img src="../Audio.png" width="100%" height="100%"></button>
+          </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script>
+      function aumentar() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho < 35) {
+                  elemento.style.fontSize = (tamanho + 10) + "px";
+              }
+          });
+      }
+
+      function diminuir() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho > 25) {
+                  elemento.style.fontSize = (tamanho - 10) + "px";
+              }
+          });
+      }
+
+      // Função para iniciar a fala
+      function falarTexto(texto) {
+          var utterance = new SpeechSynthesisUtterance(texto);
+          window.speechSynthesis.speak(utterance);
+      }
+
+      document.addEventListener('click', function (event) {
+          if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+              falarTexto(event.target.textContent);
+          }
+      });
+
+      document.getElementById('toggleButton').addEventListener('click', function () {
+          var checkbox = document.getElementById('checkboxLeitura');
+          checkbox.checked = !checkbox.checked;
+      });
+  </script>
+</body>
+</html>

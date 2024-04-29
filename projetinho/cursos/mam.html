@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meio Ambiente | Etec de Itanhaém</title>
+    <link rel="stylesheet" href="../css2/css1.css">
+</head>
+<body>
+    <header class="nav"> 
+        <img class="logo" src="../logo.png" alt="">
+        <div class="nav-right">
+            <a href="../dash.html"><button class="btn">Cursos</button></a>
+            <a href="../index.html"><button class="btn">Vestibulinho</button></a>
+            </div>
+        </div>
+    </header>
+
+
+    
+    <h1 class="fancy">Meio Ambiente</h1><br>
+    <h3><center>Período Integral</center></h3>
+
+    <main class="texto">
+    <div class="curso-info">
+        <div id="S">
+            <aside>
+            <p id="R">Sobre o curso</p>
+            <p id="fds">O curso de Meio Ambiente, também conhecido como Ciências Ambientais ou Gestão Ambiental, é uma graduação que prepara os alunos para compreender, analisar e propor soluções para os desafios ambientais enfrentados pela sociedade contemporânea. Este curso é multidisciplinar, envolvendo conhecimentos das áreas de ciências biológicas, geografia, química, engenharia ambiental, entre outras. Durante o curso, os alunos estudam uma variedade de disciplinas que abordam questões ambientais, tais como ecologia, gestão de recursos naturais, conservação da biodiversidade, poluição ambiental, legislação ambiental, impacto ambiental, gestão de resíduos, entre outros temas.</p>
+            </aside>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Area de Atuação</p>
+            <p>A área de atuação de um técnico em meio ambiente engloba diversas atividades relacionadas à gestão ambiental e sustentabilidade. Isso inclui trabalhar em empresas para implementar práticas sustentáveis, na indústria para avaliar e mitigar impactos ambientais, em consultorias para realizar estudos de impacto ambiental, em órgãos governamentais para fiscalizar e elaborar políticas ambientais, em ONGs para desenvolver projetos de conservação, e em instituições de pesquisa e educação para realizar estudos e educar sobre questões ambientais. É uma área multifacetada que oferece oportunidades para contribuir com a proteção e preservação do meio ambiente em diversos contextos.</p>
+        </div>
+
+        <div id="T">
+            <aside>
+            <p id="R">Onde Trabalhar</p>
+            <p>Como técnico em meio ambiente, você pode encontrar oportunidades em uma variedade de setores, incluindo empresas privadas, indústria, órgãos governamentais, consultorias ambientais, organizações não governamentais e instituições de ensino e pesquisa. Suas responsabilidades podem incluir garantir conformidade com regulamentações ambientais, avaliar e mitigar impactos ambientais, implementar práticas sustentáveis e promover a conscientização sobre questões ambientais. É uma carreira que oferece diversas opções e permite contribuir para a proteção e 
+                  preservação do meio ambiente em diferentes contextos.
+            </p>
+        </div>
+    </div>
+</main>
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+   <div class="botao">
+              <!-- Botões de controle -->
+              <input type="checkbox" id="checkboxLeitura" style="display:none;">
+              <br>
+              <button id="maior" class="varela-round-regular" onclick="aumentar()">A</button>
+              <br>
+              <button id="menor" class="varela-round-regular" onclick="diminuir()">a</button>
+              <br>
+              <button id="toggleButton"><img src="../Audio.png" width="100%" height="100%"></button>
+          </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script>
+      function aumentar() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho < 35) {
+                  elemento.style.fontSize = (tamanho + 10) + "px";
+              }
+          });
+      }
+
+      function diminuir() {
+          var elementosTexto = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+          elementosTexto.forEach(function (elemento) {
+              let style = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+              var tamanho = parseFloat(style);
+              if (tamanho > 25) {
+                  elemento.style.fontSize = (tamanho - 10) + "px";
+              }
+          });
+      }
+
+      // Função para iniciar a fala
+      function falarTexto(texto) {
+          var utterance = new SpeechSynthesisUtterance(texto);
+          window.speechSynthesis.speak(utterance);
+      }
+
+      document.addEventListener('click', function (event) {
+          if ((event.target.nodeName === 'H1' || event.target.nodeName === 'P') && document.getElementById('checkboxLeitura').checked) {
+              falarTexto(event.target.textContent);
+          }
+      });
+
+      document.getElementById('toggleButton').addEventListener('click', function () {
+          var checkbox = document.getElementById('checkboxLeitura');
+          checkbox.checked = !checkbox.checked;
+      });
+  </script>
+
+</body>
+</html>

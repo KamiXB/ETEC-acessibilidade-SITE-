@@ -1,0 +1,162 @@
+body{
+  background-color: #320d0d;
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", sans-serif;
+  font-style: normal;
+}
+
+header {
+  background-color: white;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 20px; 
+}
+
+a, .btn {
+  color: #320d0d;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid #320d0d;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #320d0d;
+  color: white;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type=text] {
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.search-container button {
+  padding: 5px 10px;
+  background-color: #450000;
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.search-container button:hover {
+  background: #a04545;
+  
+}
+
+.logo{
+  width: 150px; 
+  height: auto; 
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+.dash:hover{
+  transform: translateY(-14px);
+  transition: 1.5s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 40px;
+  margin-top: 10%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px; 
+}
+
+.dash {
+  width: 350px;
+  height: 230px;
+  text-align: center;
+  overflow: hidden; 
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  background-color: white;
+}
+
+/* Adicionei a propriedade text-decoration diretamente aos links */
+.dash a {
+  text-decoration: none;
+}
+
+#um{
+  border: 0;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.botao {
+  position: fixed;
+  top: 37%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: transparent;
+  padding: 4px;
+}
+
+.botao button {
+  display: block;
+  margin-bottom: 5px;
+  width: 35px;
+  height: 35px;
+  line-height: 30px; 
+  font-size: 16px; 
+  border:none;
+  border-radius: 5px;
+  background-color: #2975E0;
+}
+
+.varela-round-regular {
+font-family: "Varela Round", sans-serif;
+font-weight: 400;
+font-style: normal;
+color: white;
+}
+
+.botao #toggleButton {
+  display: block;
+  margin-bottom: 5px;
+  width: 35px;
+  height: 35px;
+  line-height: 30px; 
+  font-size: 16px; 
+  border:none;
+  padding: 0;
+  margin-right: 10px;
+}
